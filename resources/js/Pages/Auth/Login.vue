@@ -39,12 +39,12 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <InputLabel for="email" value="メールアドレス" />
 
                 <TextInput
                     id="email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="mt-1 rounded-3xl block w-full"
                     v-model="form.email"
                     required
                     autofocus
@@ -55,12 +55,12 @@ const submit = () => {
             </div>
 
             <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                <InputLabel for="password" value="パスワード" />
 
                 <TextInput
                     id="password"
                     type="password"
-                    class="mt-1 block w-full"
+                    class="mt-1 rounded-3xl block w-full"
                     v-model="form.password"
                     required
                     autocomplete="current-password"
@@ -72,28 +72,39 @@ const submit = () => {
             <div class="block mt-4">
                 <label class="flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="ms-2 text-sm text-gray-600">Remember me</span>
+                    <span class="ms-2 text-sm text-gray-500 font-bold">ログインのままにする</span>
                 </label>
+            </div>
+
+            <div class="flex mt-4">
+                <button type="submit" class="mx-auto bg-sky-300 text-white w-1/2 py-2 rounded-3xl font-bold hover:bg-sky-200">
+                    ログイン
+                </button>
+            </div>
+
+            <div class="flex mt-4">
+                <a :href="route('login.google')" class="mx-auto bg-sky-300 text-white w-1/2 py-2 rounded-3xl font-bold hover:bg-sky-200 text-center">
+                    Googleでログイン
+                </a>
+            </div>
+
+            <div class="flex mt-4">
+                <a
+                    :href="route('register')"
+                    class="mx-auto bg-sky-300 text-white w-1/2 py-2 rounded-3xl font-bold hover:bg-sky-200 text-center"
+                    >アカウント作成</a
+                >
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 <Link
                     v-if="canResetPassword"
                     :href="route('password.request')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    class="underline text-sm text-gray-600 hover:text-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 font-bold"
                 >
-                    Forgot your password?
+                    パスワードを忘れましたか？
                 </Link>
-
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Log in
-                </PrimaryButton>
             </div>
         </form>
-        <div class="flex items-center justify-end mt-4">
-            <a :href="route('login.google')" class="ml-3 inline-flex items-center">
-                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" style="margin-left: 3em;">
-            </a>
-        </div>
     </GuestLayout>
 </template>
