@@ -11,12 +11,12 @@ defineProps({
 <template>
     <div class="min-h-screen bg-white">
         <div class="max-w-lg mx-auto pt-10 mt-20">
-            <div class="relative h-[500px] w-full rounded-md border-2 border-gray-500 bg-slate-100">
+            <div class="relative h-[500px] w-full rounded-md border-2 border-slate-400 bg-slate-100">
 
                 <!-- header -->
-                <div class="flex h-20 items-center justify-between bg-slate-500 p-6">
-                    <div class="text-xl text-white">{{ friendName }}</div>
-                    <div class="text-xl text-white">=</div>
+                <div class="flex h-20 items-center justify-between bg-slate-400 p-6">
+                    <div class="text-xl text-white font-bold">{{ friendName }}</div>
+                    <a :href="route('friends')" class="text-sm text-white hover:text-base">戻る</a>
                 </div>
 
                 <!-- comment -->
