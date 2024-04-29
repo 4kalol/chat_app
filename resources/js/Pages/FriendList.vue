@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import Hamburger from '../Components/Hamburger.vue';
 
 defineProps({
@@ -16,7 +16,9 @@ defineProps({
                 <Hamburger/>
             </div>
             <div class="w-full rounded-lg shadow-md font-bold flex justify-between px-6 py-5">
-                <div class="text-3xl">{{ userName }}</div>
+                <div class="text-3xl">
+                {{ userName }}
+                </div>
                 <div class="rounded-full bg-gray-200 h-16 w-16 flex justify-center items-center">
                     <div class="">
                         <img src="/images/fukidashi03.png" alt="icon">
@@ -28,8 +30,10 @@ defineProps({
             友だちリスト
             </h1>
             <ul>
-                <li v-for="friend in friends" :key="friend.id" class="bg-white py-4 px-4 rounded-lg mb-2 shadow-md border-l-4 border-[#00BFFF] text-lg font-bold">
-                    {{ friend.name }}
+                <li v-for="friend in friends" :key="friend.id" class="bg-white py-4 px-4 rounded-lg mb-2 shadow-md border-l-4 border-[#00BFFF] text-lg font-bold hover:bg-gray-100">
+                    <a :href="route('talk.get',{friend_id: friend.id})">
+                        {{ friend.name }}
+                    </a>
                 </li>
             </ul>
         </div>

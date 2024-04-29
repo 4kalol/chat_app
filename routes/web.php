@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\FriendsListController;
+use App\Http\Controllers\TalkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/talk_room/{friend_id}', [TalkController::class, 'get'])->name('talk.get');
 });
 
 require __DIR__.'/auth.php';
